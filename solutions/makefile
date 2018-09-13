@@ -1,6 +1,8 @@
 CXX = g++
 CC = gcc
 
+CXX_FLAGS = --std=c++11
+
 SRC_DIR = ./
 BIN_DIR = ./
 TMP_DIR = ./tmp 
@@ -21,7 +23,7 @@ $(filter %.a, $(C_TARGETS)) : %.a : %.c
 	$(CC) $^ -o $@
 
 $(filter %.a, $(CPP_TARGETS)) : %.a : %.cpp 
-	$(CXX) $^ -o $@
+	$(CXX) $(CXX_FLAGS) $^ -o $@
 
 #$(OBJS) : %.c 
 #	$(CC) $< -o $@

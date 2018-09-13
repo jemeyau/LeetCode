@@ -32,146 +32,67 @@ struct ListNode
     ListNode(int x) : val(x), next(NULL) {}
 };
 
-class Solution {
-public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode* pstResult = NULL;
-        ListNode* pstResultIter = NULL;
-        ListNode* pstTmpResult = NULL;
-        ListNode* pstL1Iter = l1;
-        ListNode* pstL2Iter = l2;
+class Solution
+{
+  public:
+    ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
+    {
+        ListNode *head = new ListNode(0);
+        ListNode *iter = head;
+        ListNode *next = NULL;
 
-        //是否产生进位
-        int iUp = 0;
-
-        int iL1Val = 0;
-        int iL2Val = 0;
-
-        int iSum = 0;
-        int iLeft = 0;
-
-        while (NULL != pstL1Iter && NULL != pstL2Iter)
+        int carry = 0;
+        while (l1 || l2)
         {
-            iL1Val = pstL1Iter->val;
-            iL2Val = pstL2Iter->val;
+            carry = 0;
 
-            iSum = iUp + iL1Val + iL2Val;
-
-            iUp = iSum / 10;
-            iLeft = iSum % 10;
-
-            pstTmpResult = new ListNode(iLeft);
-
-            if (NULL == pstResult)
+            if (l1)
             {
-                pstResult = pstTmpResult;
-                pstResultIter = pstResult;
-            }
-            else
-            {
-                pstResultIter->next = pstTmpResult;
-                pstResultIter = pstTmpResult;
+                iter->val += l1->val;
+
+                l1 = l1->next;
             }
 
-            pstL1Iter = pstL1Iter->next;
-            pstL2Iter = pstL2Iter->next;
-
-/*
-            cout << "L1Val:" << iL1Val
-                << " L2Val:" << iL2Val
-                << " Sum:" << iSum
-                << " Left:" << iLeft
-                << " Up:" << iUp
-                << endl;
-                */
-        }
-
-        if (NULL != pstL1Iter && NULL != pstL2Iter)
-        {
-            //cout << "Should not be here." << endl;
-            return NULL;
-        }
-
-        ListNode* pstLeftIter = NULL;
-
-        if (NULL != pstL1Iter)
-        {
-            pstLeftIter = pstL1Iter;
-        }
-        else if (NULL != pstL2Iter)
-        {
-            pstLeftIter = pstL2Iter;
-        }
-
-        //如果无进位，则直接把较长的列表连过来
-        if (0 == iUp)
-        {
-            pstResultIter->next = pstLeftIter;
-
-            return pstResult;
-        }
-
-        //否则一直加到无进位产生
-        while (iUp && pstLeftIter)
-        {
-            iSum = iUp + pstLeftIter->val;
-
-            iUp = iSum / 10;
-            iLeft = iSum % 10;
-
-            pstTmpResult = new ListNode(iLeft);
-
-            if (NULL == pstResult)
+            if (l2)
             {
-                pstResult = pstTmpResult;
-                pstResultIter = pstResult;
-            }
-            else
-            {
-                pstResultIter->next = pstTmpResult;
-                pstResultIter = pstTmpResult;
+                iter->val += l2->val;
+
+                l2 = l2->next;
             }
 
-            pstLeftIter = pstLeftIter->next;
-        }
+            carry = iter->val / 10;
+            iter->val = iter->val % 10;
 
-        if (0 == iUp)
-        {
-            pstResultIter->next = pstLeftIter;
-        }
-        else
-        {
-            pstTmpResult = new ListNode(iUp);
-
-            if (NULL == pstResult)
+            if (l1 || l2 || carry)
             {
-                pstResult = pstTmpResult;
-                pstResultIter = pstResult;
-            }
-            else
-            {
-                pstResultIter->next = pstTmpResult;
-                pstResultIter = pstTmpResult;
+                next = new ListNode(carry);
+                iter->next = next;
+                iter = next;
             }
         }
 
-        return pstResult;
+        return head;
     }
 };
 
-void trimLeftTrailingSpaces(string &input) {
+void trimLeftTrailingSpaces(string &input)
+{
     input.erase(input.begin(), find_if(input.begin(), input.end(), [](int ch) {
-        return !isspace(ch);
-    }));
+                    return !isspace(ch);
+                }));
 }
 
-void trimRightTrailingSpaces(string &input) {
+void trimRightTrailingSpaces(string &input)
+{
     input.erase(find_if(input.rbegin(), input.rend(), [](int ch) {
-        return !isspace(ch);
-    }).base(), input.end());
+                    return !isspace(ch);
+                })
+                    .base(),
+                input.end());
 }
 
-vector<int> stringToIntegerVector(string input) {
+vector<int> stringToIntegerVector(string input)
+{
     vector<int> output;
     trimLeftTrailingSpaces(input);
     trimRightTrailingSpaces(input);
@@ -180,20 +101,23 @@ vector<int> stringToIntegerVector(string input) {
     ss.str(input);
     string item;
     char delim = ',';
-    while (getline(ss, item, delim)) {
+    while (getline(ss, item, delim))
+    {
         output.push_back(stoi(item));
     }
     return output;
 }
 
-ListNode* stringToListNode(string input) {
+ListNode *stringToListNode(string input)
+{
     // Generate list from the input
     vector<int> list = stringToIntegerVector(input);
 
     // Now convert that list into linked list
-    ListNode* dummyRoot = new ListNode(0);
-    ListNode* ptr = dummyRoot;
-    for(int item : list) {
+    ListNode *dummyRoot = new ListNode(0);
+    ListNode *ptr = dummyRoot;
+    for (int item : list)
+    {
         ptr->next = new ListNode(item);
         ptr = ptr->next;
     }
@@ -202,27 +126,32 @@ ListNode* stringToListNode(string input) {
     return ptr;
 }
 
-string listNodeToString(ListNode* node) {
-    if (node == nullptr) {
+string listNodeToString(ListNode *node)
+{
+    if (node == nullptr)
+    {
         return "[]";
     }
 
     string result;
-    while (node) {
+    while (node)
+    {
         result += to_string(node->val) + ", ";
         node = node->next;
     }
     return "[" + result.substr(0, result.length() - 2) + "]";
 }
 
-int main() {
+int main()
+{
     string line;
-    while (getline(cin, line)) {
-        ListNode* l1 = stringToListNode(line);
+    while (getline(cin, line))
+    {
+        ListNode *l1 = stringToListNode(line);
         getline(cin, line);
-        ListNode* l2 = stringToListNode(line);
-        
-        ListNode* ret = Solution().addTwoNumbers(l1, l2);
+        ListNode *l2 = stringToListNode(line);
+
+        ListNode *ret = Solution().addTwoNumbers(l1, l2);
 
         string out = listNodeToString(ret);
         cout << out << endl;

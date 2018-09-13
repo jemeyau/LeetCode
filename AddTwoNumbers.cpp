@@ -39,39 +39,34 @@ class Solution
     {
         ListNode *head = new ListNode(0);
         ListNode *iter = head;
-        ListNode *next = NULL;
 
         int carry = 0;
-        while (l1 || l2)
+        int sum = 0;
+        while (l1 || l2 || carry)
         {
-            carry = 0;
+            sum = carry;
 
             if (l1)
             {
-                iter->val += l1->val;
+                sum += l1->val;
 
                 l1 = l1->next;
             }
 
             if (l2)
             {
-                iter->val += l2->val;
+                sum += l2->val;
 
                 l2 = l2->next;
             }
 
-            carry = iter->val / 10;
-            iter->val = iter->val % 10;
+            iter->next = new ListNode(sum % 10);
+            iter = iter->next;
 
-            if (l1 || l2 || carry)
-            {
-                next = new ListNode(carry);
-                iter->next = next;
-                iter = next;
-            }
+            carry = sum / 10;
         }
 
-        return head;
+        return head->next;
     }
 };
 

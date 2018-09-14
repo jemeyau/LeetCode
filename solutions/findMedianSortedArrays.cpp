@@ -60,8 +60,64 @@ private:
         while (iMinIndex <= iMaxIndex)
         {
             i = (iMinIndex + iMaxIndex) / 2;
-            j = (m + n + 1) / 2 - i;
+            j = (m + n) / 2 - i;
 
+            if (i > 0 && j < n && rstA[i-1] > rstB[j])
+            {
+                iMaxIndex = i - 1;
+            }
+            else if (i < m && j > 0 && rstB[j - 1] > rstA[i])
+            {
+                iMinIndex = i + 1;
+            }
+            else
+            {
+                int iLeftMax = 0;
+                int iRightMin = 0;
+                if (m == i)
+                {
+                    iRightMin = rstB[j];
+                }
+                else if (n == j)
+                {
+                    iRightMin = rstA[i];
+                }
+                else
+                {
+                    iRightMin = (rstA[i] < rstB[j]) ? rstA[i] : rstB[j];
+                }
+
+                if ((m + n) % 2)
+                {
+                    result = iRightMin;
+                    break;
+                }
+
+                if (i == 0)
+                {
+                    iLeftMax = rstB[j - 1];
+                }
+                else if (j == 0)
+                {
+                    iLeftMax = rstA[i - 1];
+                }
+                else
+                {
+                    iLeftMax = (rstA[i - 1] > rstB[j - 1]) ? rstA[i - 1] : rstB[j - 1];
+                }
+
+                result = (iLeftMax + iRightMin) / 2.0;
+                break;
+            }
+
+            /*
+            you can also remove the "+1"，but then the solution should be different.
+            because i+j = (m+n)/2，so if (m+n) is odd,
+            you can assume that the right_part has one more element than the left_part,
+            so midian is min(A[i], B[j]);
+            if (m+n) is even, the midian is (max(A[i-1], B[j-1]) + min(A[i], B[j])) / 2.
+            i = (iMinIndex + iMaxIndex) / 2;
+            j = (m + n + 1) / 2 - i;//do "+1"
             if (((0 == i) || (n == j) || (rstA[i - 1] <= rstB[j])) &&
                 ((m == i) || (0 == j) || (rstA[i] >= rstB[j - 1])))
             {
@@ -109,6 +165,7 @@ private:
             {
                 iMinIndex = i + 1;
             }
+            */
         }
 
         return result;

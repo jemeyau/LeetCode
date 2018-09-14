@@ -29,206 +29,91 @@ class Solution
   public:
     double findMedianSortedArrays(vector<int> &nums1, vector<int> &nums2)
     {
-        int iNums1Size = nums1.size();
-        int iNums2Size = nums2.size();
-
-        if (0 == iNums1Size)
+        int iNums1Len = nums1.size();
+        int iNums2Len = nums2.size();
+        if (iNums1Len <= iNums2Len)
         {
-            return type_own(nums2);
+            return doFind(nums1, nums2);
         }
 
-        if (0 == iNums2Size)
-        {
-            return type_own(nums1);
-        }
-
-        int iNums1MinNum = nums1[0];
-        int iNums1MaxNum = nums1[iNums1Size - 1];
-
-        int iNums2MinNum = nums2[0];
-        int iNums2MaxNum = nums2[iNums2Size - 1];
-
-        /*
-        nums1:     |3,4,5|
-        nums2:            |6,7,8|
-        */
-        if (iNums1MaxNum < iNums2MinNum)
-        {
-            return type_jump(nums1, nums2);
-        }
-        /*
-        nums1:      |3,4,5|
-        nums2: |1,2|
-        */
-        else if (iNums2MaxNum < iNums1MinNum)
-        {
-            return type_jump(nums2, nums1);
-        }
-        /*
-        nums1:          |3,4,5|
-        nums2:      |1,2,3,4,5|
-        */
-        else if (iNums1MaxNum <= iNums2MaxNum && iNums1MinNum >= iNums2MinNum)
-        {
-            return type_own(nums2);
-        }
-        /*
-        nums1:          |2,3,4,5,6|
-        nums2:            |3,4,5|
-        */
-        else if (iNums2MaxNum <= iNums1MaxNum && iNums2MinNum >= iNums1MinNum)
-        {
-            return type_own(nums1);
-        }
-        /*
-        nums1:     |3,4,5|
-        nums2:         |5,6,7|
-        */
-        else if (iNums1MaxNum >= iNums2MinNum && iNums1MaxNum < iNums2MaxNum && iNums1MinNum < iNums2MinNum)
-        {
-            return type_cross(nums1, nums2);
-        }
-        /*
-       nums1:        |3,4,5|
-       nums2       |2,3,4|
-       */
-        else if (iNums1MaxNum > iNums2MaxNum && iNums2MinNum > iNums2MinNum && iNums1MinNum <= iNums2MaxNum)
-        {
-            return type_cross(nums2, nums1);
-        }
-
-        cout << "should not be here!" << endl;
-        return 0;
+        return doFind(nums2, nums1);
     }
-
-  private:
-    int binary_find(vector<int> vec, int key)
+private:
+    //保证rstA.size() <= rstB.size()
+    double doFind(vector<int>& rstA, vector<int>& rstB)
     {
-        size_t mid, left = 0;
-        size_t right = vec.size(); // one position passed the right end
-        while (left < right)
+        if (rstA.size() > rstB.size())
         {
-            mid = left + (right - left) / 2;
-            if (key > vec[mid])
+            return -1;
+        }
+
+        int m = rstA.size();
+        int n = rstB.size();
+
+        int iMinIndex = 0; 
+        int iMaxIndex = m;
+
+        double result = 0.0;
+
+        int i = 0;
+        int j = 0;
+        while (iMinIndex <= iMaxIndex)
+        {
+            i = (iMinIndex + iMaxIndex) / 2;
+            j = (m + n + 1) / 2 - i;
+
+            if (((0 == i) || (n == j) || (rstA[i - 1] <= rstB[j])) &&
+                ((m == i) || (0 == j) || (rstA[i] >= rstB[j - 1])))
             {
-                left = mid + 1;
+                int iLeftMax = 0;
+                int iRightMin = 0;
+                if (0 == i)
+                {
+                    iLeftMax = rstB[j - 1];
+                }
+                else if (0 == j)
+                {
+                    iLeftMax = rstA[i - 1];
+                }
+                else
+                {
+                    iLeftMax = (rstA[i - 1] > rstB[j - 1]) ? rstA[i - 1] : rstB[j - 1];
+                }
+                if ((m + n) % 2)
+                {
+                    result = iLeftMax;
+                    break;
+                }
+
+                if (n == j)
+                {
+                    iRightMin = rstA[i];
+                }
+                else if (m == i)
+                {
+                    iRightMin = rstB[j];
+                }
+                else
+                {
+                    iRightMin = (rstA[i] < rstB[j]) ? rstA[i] : rstB[j];
+                }
+
+                result = (iLeftMax + iRightMin) / 2.0;
+                break;
             }
-            else if (key < vec[mid])
+            else if (rstB[j] < rstA[i - 1])
             {
-                right = mid;
+                iMaxIndex = i - 1;
             }
             else
             {
-                return mid;
+                iMinIndex = i + 1;
             }
         }
 
-        return -1;
-    }
-    /*
-    交叉型
-    a:  [1,2,3,4]
-    b:      [3,6,7]
-    */
-    double type_cross(vector<int> &left, vector<int> &right)
-    {
-        //cout << "type cross" << endl;
-        int iLeftSize = left.size();
-        int iRightSize = right.size();
-
-        //int iLeftMax = left[iLeftSize - 1];
-        int iRightMin = right[0];
-
-        int iSameLen = iLeftSize - binary_find(left, iRightMin);
-        if (0 >= iSameLen)
-        {
-            return 0;
-        }
-
-        int iTotalLen = iLeftSize + iRightSize - iSameLen;
-        int iMidIndex = iTotalLen / 2;
-
-        if (iTotalLen % 2)
-        {
-            if (iMidIndex < iLeftSize)
-            {
-                return left[iMidIndex];
-            }
-
-            return right[iMidIndex - iLeftSize - iSameLen];
-        }
-
-        if (iMidIndex == iLeftSize)
-        {
-            return (left[iLeftSize - 1] + (double)right[iSameLen]) / 2;
-        }
-        else if (iMidIndex < iLeftSize)
-        {
-            return (left[iMidIndex] + (double)left[iMidIndex - 1]) / 2;
-        }
-        else
-        {
-            return (right[iMidIndex - iLeftSize + iSameLen] + (double)right[iMidIndex - iLeftSize - 1 + iSameLen]) / 2;
-        }
-    }
-
-    /*
-    跨越型
-    a:  [1,2,3,4,5]
-    b:                [7,8,9,10]
-    */
-    double type_jump(vector<int> &left, vector<int> &right)
-    {
-        //cout << "type jump" << endl;
-        int iLeftSize = left.size();
-        int iRightSize = right.size();
-
-        int iMidIndex = (iLeftSize + iRightSize) / 2;
-
-        if ((iLeftSize + iRightSize) % 2)
-        {
-            if (iMidIndex < iLeftSize)
-            {
-                return left[iMidIndex];
-            }
-
-            return right[iMidIndex - iLeftSize];
-        }
-
-        if (iMidIndex == iLeftSize)
-        {
-            return (left[iLeftSize - 1] + (double)right[0]) / 2;
-        }
-        else if (iMidIndex < iLeftSize)
-        {
-            return (left[iMidIndex] + (double)left[iMidIndex - 1]) / 2;
-        }
-        else
-        {
-            return (right[iMidIndex - iLeftSize] + (double)right[iMidIndex - 1 - iLeftSize]) / 2;
-        }
-    }
-
-    /*
-   包含型
-   a:  [1,2,4,5]
-   b     [2,3]
-   */
-    double type_own(vector<int> &bigger)
-    {
-        //cout << "type own" << endl;
-        int iBiggerSize = bigger.size();
-        int iMidIndex = iBiggerSize / 2;
-
-        if (iBiggerSize % 2)
-        {
-            return bigger[iMidIndex];
-        }
-
-        return (bigger[iMidIndex] + (double)bigger[iMidIndex - 1]) / 2;
+        return result;
     }
 };
-
 void trimLeftTrailingSpaces(string &input)
 {
     input.erase(input.begin(), find_if(input.begin(), input.end(), [](int ch) {

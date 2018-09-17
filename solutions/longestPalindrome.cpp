@@ -13,69 +13,68 @@ Output: "bb"
 
 #include "comm_header.h"
 
-class Solution
-{
-  public:
-    string longestPalindrome(string s)
-    {
+class Solution {
+public:
+    string longestPalindrome(string s) {
         int beg = 0;
         int end = s.size() - 1;
-
-        for (int i = s.size(); i > 0; i--)
+        
+        int cur_beg = 0;
+        int cur_end = 0;
+        for (int i = 0; i < s.size(); i++)
         {
-            int ret = doLongest(s, i);
-            if (ret >= 0)
-                return s.substr(ret, i);
+            int r = ((i-beg+1)<(end-i+1))?(i-beg+1):(end-i+1);
+            
+            int a = i;
+            int b = i+1;
+            bool a_b = true;
+            
+            int c = i-1;
+            int d = i+1;
+            bool c_d = true; 
+            int j = 0;
+            for (j = 0; j < r; j++)
+            {
+                if (s[a] == s[b])
+                {
+                    if ((cur_end - cur_beg) <= (b - a))
+                    {
+                        cur_end = b;
+                        cur_beg = a;
+                    }
+                    a--;
+                    b++;
+                }
+                else
+                {
+                    a_b = false;
+                }
+                
+                if (c>=0 && s[c] == s[d])
+                {
+                    if ((cur_end - cur_beg) <= (d - c))
+                    {
+                        cur_end = d;
+                        cur_beg = c;
+                    }
+                    c--;
+                    d++;
+                }
+                else
+                {
+                    c_d = false;
+                }
+                
+                if (!a_b && !c_d)
+                {
+                    break;
+                }
+            }
         }
-        return "";
+        
+        return s.substr(cur_beg, cur_end-cur_beg+1);
     }
-
-  private:
-    bool isPalindromic(string &s, int beg, int end)
-    {
-        int len = end - beg + 1;
-
-        if (1 == len)
-            return true;
-        if (2 == len || 3 == len)
-            return s[beg] == s[end];
-
-        int i = 0;
-        int j = 0;
-
-        if (len % 2)
-        {
-            i = beg + len / 2 - 1;
-            j = beg + len / 2 + 1;
-        }
-        else
-        {
-            i = beg + len / 2 - 1;
-            j = beg + len / 2;
-        }
-
-        while (i >= beg && j <= end)
-        {
-            if (s[i] != s[j])
-                return false;
-            i--;
-            j++;
-        }
-
-        return true;
-    }
-
-    int doLongest(string &s, int len)
-    {
-        int s_len = s.size();
-        for (int i = 0; i + len <= s_len; i++)
-        {
-            if (isPalindromic(s, i, i + len - 1))
-                return i;
-        }
-
-        return -1;
-    }
+     
 };
 
 string stringToString(string input)

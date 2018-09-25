@@ -1,11 +1,14 @@
 Index | Problem | Solution
 |---|------ |------|
+| 7 | [String to Integer (atoi)][7_link] | [solution][7_solution]
 | 6 | [ZigZag Conversion][6_link] | [solution][6_solution]
 | 5 | [Longest Palindromic Substring][5_link] | [solution][5_solution]
 | 4 | [Median of Two Sorted Arrays][4_link] | [solution][4_solution]
 | 3 | [Longest Substring Without Repeating Characters][3_link] | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | [solution][2_solution]
 
+[7_link]: https://leetcode.com/problems/string-to-integer-atoi/description/
+[7_solution]: ./solutions/myAtoi.cpp
 [6_link]: https://leetcode.com/problems/zigzag-conversion/description/
 [6_solution]: ./solutions/ZigZagConversion.cpp
 [5_link]: https://leetcode.com/problems/longest-palindromic-substring/description/

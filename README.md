@@ -1,5 +1,6 @@
 Index | Problem | Solution
 |---|------ |------|
+| 8 | [Palindrome Number][8_link] | [cpp][8_solution]
 | 7 | [String to Integer (atoi)][7_link] | [solution][7_solution]
 | 6 | [ZigZag Conversion][6_link] | [solution][6_solution]
 | 5 | [Longest Palindromic Substring][5_link] | [solution][5_solution]
@@ -7,6 +8,8 @@ Index | Problem | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | [solution][2_solution]
 
+[8_link]: https://leetcode.com/problems/palindrome-number/
+[8_solution]: ./solutions/isPalindrome.cpp
 [7_link]: https://leetcode.com/problems/string-to-integer-atoi/description/
 [7_solution]: ./solutions/myAtoi.cpp
 [6_link]: https://leetcode.com/problems/zigzag-conversion/description/

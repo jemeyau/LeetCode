@@ -57,13 +57,19 @@ class Solution
             return false;
         }
 
+        const int maxAddChars = s.size() - minLen;
+
+        /*
         bool bRet = formatRegStr(p);
         //cout << "p: " << p << endl;
         if (!bRet)
             return false;
+*/
+
+        //cout << "sSize: " << s.size() << "maxAdd: " << maxAddChars << endl;
 
         int sIndex = 0;
-        char chLastMatch = ' ';
+        int lastMatchChars = 0;
 
         for (int iIndex = 0; iIndex < p.size(); iIndex++)
         {
@@ -86,44 +92,58 @@ class Solution
                         break;
                     }
 
-                    chLastMatch = sCh;
+                    if (lastMatchChars < maxAddChars)
+                    {
+                        lastMatchChars++;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
 
                 iIndex++;
             }
             else
             {
-                //s has reached the end, check if the left single character matches
-                if (sIndex >= s.size())
-                {
-                    if (chLastMatch != preCh)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
-
-                char sCh = s[sIndex++];
+                char sCh = s[sIndex];
 
                 if ('.' == preCh || preCh == sCh)
                 {
+                    lastMatchChars = 0;
+                    sIndex++;
                     continue;
                 }
                 else
                 {
-                    return false;
+                    bool bMatch = false;
+                    while (lastMatchChars > 0)
+                    {
+                        lastMatchChars--;
+                        sCh = s[--sIndex];
+                        if ('.' == preCh || preCh == sCh)
+                        {
+                            sIndex++;
+                            bMatch = true;
+                            break;
+                        }
+                    }
+
+                    if (!bMatch)
+                    {
+                        //cout << "s: " << s.substr(sIndex) << ", p: " << p.substr(iIndex) << endl;
+                        return false;
+                    }
                 }
             }
         }
 
-        if (sIndex == s.size())
+        if (sIndex >= s.size())
         {
             return true;
         }
 
+        //cout << "s: " << s.substr(sIndex) << endl;
         return false;
     }
 

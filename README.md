@@ -1,5 +1,6 @@
 Index | Problem | Solution
 |---|------ |------|
+| 10 | [Regular Expression Matching][10_link] | [cpp][10_solution]
 | 9 | [Palindrome Number][9_link] | [cpp][9_solution]
 | 8 | [String to Integer (atoi)][8_link] | [solution][8_solution]
 | 7 | [Reverse Integer][7_link] | [sloution][7_solution]
@@ -9,6 +10,8 @@ Index | Problem | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | [solution][2_solution]
 
+[10_link]: https://leetcode.com/problems/regular-expression-matching/description/
+[10_solution]: ./solutions/isMatch.cpp
 [9_link]: https://leetcode.com/problems/palindrome-number/
 [9_solution]: ./solutions/isPalindrome.cpp
 [8_link]: https://leetcode.com/problems/string-to-integer-atoi/description/

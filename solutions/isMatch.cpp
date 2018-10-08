@@ -51,145 +51,92 @@ class Solution
   public:
     bool isMatch(string s, string p)
     {
-        int minLen = minRequireLen(p);
-        if (s.size() < minLen)
-        {
-            return false;
-        }
-
-        const int maxAddChars = s.size() - minLen;
-
-        /*
-        bool bRet = formatRegStr(p);
-        //cout << "p: " << p << endl;
-        if (!bRet)
-            return false;
-*/
-
-        //cout << "sSize: " << s.size() << "maxAdd: " << maxAddChars << endl;
-
-        int sIndex = 0;
-        int lastMatchChars = 0;
-
-        for (int iIndex = 0; iIndex < p.size(); iIndex++)
-        {
-            //should do match until not match
-            bool bUntil = false;
-
-            char preCh = p[iIndex];
-
-            if (iIndex + 1 < p.size() && p[iIndex + 1] == '*')
-                bUntil = true;
-
-            if (bUntil)
-            {
-                for (; sIndex < s.size(); sIndex++)
-                {
-                    char sCh = s[sIndex];
-
-                    if (sCh != preCh && preCh != '.')
-                    {
-                        break;
-                    }
-
-                    if (lastMatchChars < maxAddChars)
-                    {
-                        lastMatchChars++;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-                iIndex++;
-            }
-            else
-            {
-                char sCh = s[sIndex];
-
-                if ('.' == preCh || preCh == sCh)
-                {
-                    lastMatchChars = 0;
-                    sIndex++;
-                    continue;
-                }
-                else
-                {
-                    bool bMatch = false;
-                    while (lastMatchChars > 0)
-                    {
-                        lastMatchChars--;
-                        sCh = s[--sIndex];
-                        if ('.' == preCh || preCh == sCh)
-                        {
-                            sIndex++;
-                            bMatch = true;
-                            break;
-                        }
-                    }
-
-                    if (!bMatch)
-                    {
-                        //cout << "s: " << s.substr(sIndex) << ", p: " << p.substr(iIndex) << endl;
-                        return false;
-                    }
-                }
-            }
-        }
-
-        if (sIndex >= s.size())
-        {
-            return true;
-        }
-
-        //cout << "s: " << s.substr(sIndex) << endl;
-        return false;
-    }
-
-  private:
-    /*
-    if p looks like "ab*bcd",
-    format p to "ab*cd"
-    */
-    bool formatRegStr(string &p)
-    {
-        if ('*' == p[0])
-        {
-            return false;
-        }
-
-        for (int i = 1; i < p.size(); i++)
-        {
-            char c = p[i];
-
-            if ('*' != c)
-                continue;
-
-            while (i + 1 < p.size())
-            {
-                if (p[i + 1] == p[i - 1])
-                    p.erase(i + 1, 1);
-                else
-                    break;
-            }
-        }
-
-        return true;
-    }
-
-    int minRequireLen(string &p)
-    {
+        //cout << "s:" << s << " p:" << p << endl;
+        //1. find the first fix lenght substr of p
+        int pos = -1;
         int len = 0;
         for (int i = 0; i < p.size(); i++)
         {
             if (i + 1 < p.size() && p[i + 1] == '*')
+            {
                 i++;
+                if (1 <= len)
+                {
+                    break;
+                }
+                continue;
+            }
             else
-                len++;
+            {
+                if (-1 == pos)
+                {
+                    pos = i;
+                    len++;
+                }
+                else
+                {
+                    len++;
+                }
+            }
         }
 
-        return len;
+        if (0 == len)
+        {
+            //    cout << "len 0" << endl;
+            int j = 0;
+            for (int i = 0; i < p.size(); i++)
+            {
+                for (; j < s.size(); j++)
+                {
+                    if (p[i] != s[j] && p[i] != '.')
+                    {
+                        i++;
+                        break;
+                    }
+                }
+            }
+
+            if (j != s.size())
+                return false;
+
+            //    cout << "match" << endl;
+            return true;
+        }
+
+        ///cout << "fix: " << p.substr(pos, len) << endl;
+
+        if (s.size() < len)
+        {
+            return false;
+        }
+
+        //2. get the match position of substr in s
+        for (int index = 0; index < s.size(); index++)
+        {
+            int j = 0;
+            //be careful of j + pos < p.size() and j+index < s.size()
+            for (; j < len && j + pos < p.size() && j + index < s.size(); j++)
+            {
+                if (p[j + pos] != s[index + j] && '.' != p[j + pos])
+                    break;
+            }
+
+            if (j == len)
+            {
+                bool bLeftMatch = isMatch(s.substr(0, index), p.substr(0, pos));
+                bool bRightMatch = isMatch(s.substr(index + len, string::npos), p.substr(pos + len, string::npos));
+
+                if (bLeftMatch && bRightMatch)
+                    return true;
+            }
+            else
+            {
+                //cout << "not find" << endl;
+            }
+        }
+
+        //3. recursion
+        return false;
     }
 };
 

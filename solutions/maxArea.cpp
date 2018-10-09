@@ -28,17 +28,20 @@ class Solution
 
         int maxArea = 0;
 
-        for (int i = 0; i < height.size(); i++)
+        int left = 0;
+        int right = height.size() - 1;
+
+        /*
+        if height[left] < height[right], no need to compute (height[left], height[right-1]),
+        because maxarea(left, [right-1,right-2,...]) must be smaller than maxarea(left, right)
+        */
+        while (left < right)
         {
-            for (int j = i + 1; j < height.size(); j++)
-            {
-                int tmpArea = (j - i) * min(height[i], height[j]);
-                if (tmpArea >= maxArea)
-                {
-                    //cout << "i:" << i << ",j:" << j << ",area:" << tmpArea << endl;
-                    maxArea = tmpArea;
-                }
-            }
+            maxArea = max(maxArea, (right - left) * min(height[left], height[right]));
+            if (height[left] > height[right])
+                right--;
+            else
+                left++;
         }
 
         return maxArea;

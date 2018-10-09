@@ -1,7 +1,7 @@
 CXX = g++
 CC = gcc
 
-CXX_FLAGS = --std=c++11
+CXX_FLAGS = --std=c++11 -g -O
 
 SRC_DIR = ./
 BIN_DIR = ./

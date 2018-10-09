@@ -1,5 +1,6 @@
 Index | Problem | Solution
 |---|------ |------|
+| 13 | [Roman to Integer][13_link] | [cpp][13_solution]
 | 12 | [Integer to Roman][12_link] | [cpp][12_solution]
 | 11 | [Container With Most Water][11_link] | [cpp][11_solution]
 | 10 | [Regular Expression Matching][10_link] | [cpp][10_solution]
@@ -12,6 +13,8 @@ Index | Problem | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | [solution][2_solution]
 
+[13_link]: https://leetcode.com/problems/roman-to-integer/description/
+[13_solution]: ./solutions/romanToInt.cpp
 [12_link]: https://leetcode.com/problems/integer-to-roman/description/
 [12_solution]: ./solutions/intToRoman.cpp
 [11_link]: https://leetcode.com/problems/container-with-most-water/

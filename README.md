@@ -1,5 +1,6 @@
 Index | Problem | Solution
 |---|------ |------|
+| 15 | [3Sum][15_link] | [cpp][15_solution]
 | 14 | [Longest Common Prefix][14_link] | [cpp][14_solution]
 | 13 | [Roman to Integer][13_link] | [cpp][13_solution]
 | 12 | [Integer to Roman][12_link] | [cpp][12_solution]
@@ -14,6 +15,8 @@ Index | Problem | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | [solution][2_solution]
 
+[15_link]: https://leetcode.com/problems/3sum/description/
+[15_solution]: ./solutions/threeSum.cpp
 [14_link]: https://leetcode.com/problems/longest-common-prefix/description/
 [14_solution]: ./solutions/longestCommonPrefix.cpp
 [13_link]: https://leetcode.com/problems/roman-to-integer/description/

@@ -21,79 +21,51 @@ A solution set is:
 class Solution
 {
   public:
-    struct node
-    {
-        int first;
-        int second;
-    };
-
-  public:
     vector<vector<int>> threeSum(vector<int> &nums)
     {
-        sort(nums.begin(), nums.end());
-
-        map<int, vector<node>> store;
-        for (int i = 0; i < nums.size(); i++)
-        {
-            for (int j = i + 1; j < nums.size(); j++)
-            {
-                node tmp_node;
-                tmp_node.first = i;
-                tmp_node.second = j;
-
-                int sum = nums[i] + nums[j];
-
-                store[sum].push_back(tmp_node);
-            }
-        }
-
         vector<vector<int>> ret;
 
-        for (int i = 0; i < nums.size(); i++)
+        if (nums.size() < 3)
+            return ret;
+
+        sort(nums.begin(), nums.end());
+
+        for (int i = 0; i < nums.size() - 2; i++)
         {
-            vector<int> tmp;
             int want = 0 - nums[i];
-            tmp.push_back(nums[i]);
 
-            if (store.find(want) == store.end())
-                continue;
+            int left = i + 1;
+            int right = nums.size() - 1;
 
-            vector<node>& node_list = store.find(want)->second;
-
-            for (int j = 0; j < node_list.size(); j++)
+            while (left < right)
             {
-                tmp.clear();
-                node& one_node = node_list[j];
-                if (one_node.first == i || one_node.second == i)
-                    break;
+                int sum = nums[left] + nums[right];
 
-                cout << "a: " << nums[i] << " " << nums[one_node.first] << " " << nums[one_node.second] << endl;
-
-                tmp.push_back(nums[i]);
-                tmp.push_back(nums[one_node.first]);
-                tmp.push_back(nums[one_node.second]);
-
-                cout << "c: " << tmp[0] << " " << tmp[1] << " " << tmp[2] << endl;
-
-                sort(tmp.begin(), tmp.end());
-
-                bool exist = false;
-                for (int m = 0; m < ret.size(); m++)
+                if (sum == want)
                 {
-                    vector<int> &a_ret = ret[m];
+                    vector<int> tmp = {nums[i], nums[left], nums[right]};
 
-                    if (a_ret[0] == tmp[0] && a_ret[1] == tmp[1] && a_ret[2] == tmp[2])
-                    {
-                        exist = true;
-                        break;
-                    }
-                }
-                if (!exist)
-                {
                     ret.push_back(tmp);
-                    cout << "b: " << tmp[0] << " " << tmp[1] << " " << tmp[2] << endl;
+
+                    while (left < right && nums[right] == tmp[2])
+                        right--;
+                    while(left < right && nums[left] == tmp[1])
+                        left++;
+
+                    //cout << tmp[0] << " " << tmp[1] << " " << tmp[2] << endl;
+                }
+                else if (sum > want)
+                {
+                    right--;
+                }
+                else
+                {
+                    left++;
                 }
             }
+
+            while (i < nums.size() - 2 && nums[i] == nums[i + 1])
+                i++;
         }
 
         return ret;

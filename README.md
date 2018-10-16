@@ -1,5 +1,6 @@
 Index | Problem | Solution
 |---|------ |------|
+| 16 | [3Sum Closest][16_link] | [cpp][16_solution]
 | 15 | [3Sum][15_link] | [cpp][15_solution]
 | 14 | [Longest Common Prefix][14_link] | [cpp][14_solution]
 | 13 | [Roman to Integer][13_link] | [cpp][13_solution]
@@ -15,6 +16,8 @@ Index | Problem | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | [solution][2_solution]
 
+[16_link]: https://leetcode.com/problems/3sum-closest/description/
+[16_solution]: ./solutions/threeSumClosest.cpp
 [15_link]: https://leetcode.com/problems/3sum/description/
 [15_solution]: ./solutions/threeSum.cpp
 [14_link]: https://leetcode.com/problems/longest-common-prefix/description/

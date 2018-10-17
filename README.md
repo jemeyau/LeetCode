@@ -1,5 +1,6 @@
 Index | Problem | Solution
 |---|------ |------|
+| 18 | [4Sum][18_link] | [cpp][18_solution]
 | 17 | [Letter Combinations of a Phone Number][17_link] | [cpp][17_solution]
 | 16 | [3Sum Closest][16_link] | [cpp][16_solution]
 | 15 | [3Sum][15_link] | [cpp][15_solution]
@@ -17,6 +18,8 @@ Index | Problem | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | [solution][2_solution]
 
+[18_link]: https://leetcode.com/problems/4sum/description/
+[18_solution]: ./solutions/fourSum.cpp
 [17_link]: https://leetcode.com/problems/letter-combinations-of-a-phone-number
 [17_solution]: ./solutions/letterCombinations.cpp
 [16_link]: https://leetcode.com/problems/3sum-closest/description/

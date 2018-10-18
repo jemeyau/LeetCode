@@ -25,81 +25,88 @@ struct ListNode
 
 class Solution
 {
+  private:
+    ListNode *mergeTwoLists(ListNode *l1, ListNode *l2)
+    {
+        if (!l1)
+            return l2;
+        if (!l2)
+            return l1;
+
+        ListNode *ret = NULL;
+        ListNode *dummy = NULL;
+
+        if (l1->val < l2->val)
+        {
+            ret = l1;
+            dummy = l1;
+
+            l1 = l1->next;
+        }
+        else
+        {
+            ret = l2;
+            dummy = l2;
+
+            l2 = l2->next;
+        }
+
+        while (l1 && l2)
+        {
+            if (l1->val < l2->val)
+            {
+                dummy->next = l1;
+                dummy = dummy->next;
+
+                l1 = l1->next;
+            }
+            else
+            {
+                dummy->next = l2;
+                dummy = dummy->next;
+
+                l2 = l2->next;
+            }
+        }
+
+        if (l1)
+            dummy->next = l1;
+
+        if (l2)
+            dummy->next = l2;
+
+        return ret;
+    }
+
   public:
     ListNode *mergeKLists(vector<ListNode *> &lists)
     {
         if (lists.size() == 0)
             return NULL;
-        if (lists.size() == 1)
-            return lists[0];
 
-        ListNode *ret = NULL;
-        ListNode *dummy = NULL;
-        int firstIndex = -1;
-        for (int i = 0; i < lists.size(); i++)
+        vector<ListNode *> tmp;
+        while (lists.size() > 1)
         {
-            ListNode *curList = lists[i];
-            if (NULL == curList)
-                continue;
-
-            if (-1 == firstIndex)
-            {
-                firstIndex = i;
-                continue;
-            }
-
-            if (curList->val < lists[firstIndex]->val)
-            {
-                firstIndex = i;
-            }
-        }
-
-        //be aware of empty lists
-        if (-1 == firstIndex)
-            return NULL;
-
-        ret = lists[firstIndex];
-        dummy = lists[firstIndex];
-        lists[firstIndex] = lists[firstIndex]->next;
-
-        do
-        {
-            ListNode *tmp = NULL;
-            int index = -1;
+            tmp.clear();
             for (int i = 0; i < lists.size(); i++)
             {
-                ListNode *curList = lists[i];
-                if (NULL == curList)
+                if (i + 1 < lists.size())
                 {
-                    lists.erase(lists.begin() + i);
-                    i--;
-                    continue;
+                    //merge two lists every time, and do that recursively, until there is only one list
+                    ListNode *tmpList = mergeTwoLists(lists[i], lists[i + 1]);
+                    tmp.push_back(tmpList);
+                    i++;
                 }
-
-                if (-1 == index)
+                else
                 {
-                    index = i;
-                    continue;
-                }
-
-                if (curList->val < lists[index]->val)
-                {
-                    index = i;
+                    tmp.push_back(lists[i]);
                 }
             }
 
-            if (-1 == index)
-                break;
+            lists = tmp;
+        };
 
-            dummy->next = lists[index];
-            dummy = dummy->next;
-            lists[index] = lists[index]->next;
-
-            if (1 == lists.size())
-                break;
-        } while (true);
-
-        return ret;
+        return lists[0];
     }
 };
 

@@ -1,5 +1,6 @@
 Index | Problem | Solution
 |---|------ |------|
+| 27 | [Implement strStr()][27_link] | [cpp][27_solution]
 | 26 | [Remove Duplicates from Sorted Array][26_link] | [cpp][26_solution]
 | 25 | [Reverse Nodes in k-Group][25_link] | [cpp][25_solution]
 | 24 | [Swap Nodes in Pairs][24_link] | [cpp][24_solution]
@@ -26,6 +27,8 @@ Index | Problem | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | [solution][2_solution]
 
+[27_link]: https://leetcode.com/problems/implement-strstr/description/
+[27_solution]: ./solutions/strStr.cpp
 [26_link]: https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
 [26_solution]: ./solutions/removeDuplicates.cpp
 [25_link]: https://leetcode.com/problems/reverse-nodes-in-k-group/description/

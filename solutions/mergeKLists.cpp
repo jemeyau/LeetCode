@@ -33,40 +33,22 @@ class Solution
         if (!l2)
             return l1;
 
-        ListNode *ret = NULL;
-        ListNode *dummy = NULL;
-
-        if (l1->val < l2->val)
-        {
-            ret = l1;
-            dummy = l1;
-
-            l1 = l1->next;
-        }
-        else
-        {
-            ret = l2;
-            dummy = l2;
-
-            l2 = l2->next;
-        }
+        ListNode *ret = new ListNode(0);
+        ListNode *dummy = ret;
 
         while (l1 && l2)
         {
             if (l1->val < l2->val)
             {
                 dummy->next = l1;
-                dummy = dummy->next;
-
                 l1 = l1->next;
             }
             else
             {
                 dummy->next = l2;
-                dummy = dummy->next;
-
                 l2 = l2->next;
             }
+            dummy = dummy->next;
         }
 
         if (l1)
@@ -75,7 +57,7 @@ class Solution
         if (l2)
             dummy->next = l2;
 
-        return ret;
+        return ret->next;
     }
 
   public:
@@ -84,26 +66,15 @@ class Solution
         if (lists.size() == 0)
             return NULL;
 
-        vector<ListNode *> tmp;
-        while (lists.size() > 1)
+        int scale = 1;
+        while (lists.size() > scale)
         {
-            tmp.clear();
-            for (int i = 0; i < lists.size(); i++)
+            for (int i = 0; i + scale < lists.size(); i += scale * 2)
             {
-                if (i + 1 < lists.size())
-                {
-                    //merge two lists every time, and do that recursively, until there is only one list
-                    ListNode *tmpList = mergeTwoLists(lists[i], lists[i + 1]);
-                    tmp.push_back(tmpList);
-                    i++;
-                }
-                else
-                {
-                    tmp.push_back(lists[i]);
-                }
+                //merge two lists every time, and do that recursively, until there is only one list
+                lists[i] = mergeTwoLists(lists[i], lists[i + scale]);
             }
-
-            lists = tmp;
+            scale *= 2;
         };
 
         return lists[0];

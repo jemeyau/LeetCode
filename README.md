@@ -1,5 +1,6 @@
 Index | Problem | Solution
 |---|------ |------|
+| 23 | [Merge k Sorted Lists][23_link] | [cpp][23_solution]
 | 22 | [Generate Parentheses][22_link] | [cpp][22_solution]
 | 21 | [Merge Two Sorted Lists][21_link] | [cpp][21_solution]
 | 20 | [Valid Parentheses][20_link] | [cpp][20_solution]
@@ -22,6 +23,8 @@ Index | Problem | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | [solution][2_solution]
 
+[23_link]: https://leetcode.com/problems/merge-k-sorted-lists/description/
+[23_solution]: ./solutions/mergeKLists.cpp
 [22_link]: https://leetcode.com/problems/generate-parentheses/
 [22_solution]: ./solutions/generateParenthesis.cpp
 [21_link]: https://leetcode.com/problems/merge-two-sorted-lists/description/

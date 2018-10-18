@@ -1,5 +1,6 @@
 Index | Problem | Solution
 |---|------ |------|
+| 25 | [Reverse Nodes in k-Group][25_link] | [cpp][25_solution]
 | 24 | [Swap Nodes in Pairs][24_link] | [cpp][24_solution]
 | 23 | [Merge k Sorted Lists][23_link] | [cpp][23_solution]
 | 22 | [Generate Parentheses][22_link] | [cpp][22_solution]
@@ -24,6 +25,8 @@ Index | Problem | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | [solution][2_solution]
 
+[25_link]: https://leetcode.com/problems/reverse-nodes-in-k-group/description/
+[25_solution]: ./solutions/reverseKGroup.cpp
 [24_link]: https://leetcode.com/problems/swap-nodes-in-pairs/description/
 [24_solution]: ./solutions/swapPairs.cpp
 [23_link]: https://leetcode.com/problems/merge-k-sorted-lists/description/

@@ -70,7 +70,11 @@ class Solution
             {
                 ListNode *curList = lists[i];
                 if (NULL == curList)
+                {
+                    lists.erase(lists.begin() + i);
+                    i--;
                     continue;
+                }
 
                 if (-1 == index)
                 {
@@ -90,6 +94,9 @@ class Solution
             dummy->next = lists[index];
             dummy = dummy->next;
             lists[index] = lists[index]->next;
+
+            if (1 == lists.size())
+                break;
         } while (true);
 
         return ret;

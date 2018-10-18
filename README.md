@@ -1,5 +1,6 @@
 Index | Problem | Solution
 |---|------ |------|
+| 22 | [Generate Parentheses][22_link] | [cpp][22_solution]
 | 21 | [Merge Two Sorted Lists][21_link] | [cpp][21_solution]
 | 20 | [Valid Parentheses][20_link] | [cpp][20_solution]
 | 19 | [Remove Nth Node From End of List][19_link] | [cpp][19_solution]
@@ -21,6 +22,8 @@ Index | Problem | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | [solution][2_solution]
 
+[22_link]: https://leetcode.com/problems/generate-parentheses/
+[22_solution]: ./solutions/generateParenthesis.cpp
 [21_link]: https://leetcode.com/problems/merge-two-sorted-lists/description/
 [21_solution]: ./solutions/mergeTwoLists.cpp
 [20_link]: https://leetcode.com/problems/valid-parentheses/

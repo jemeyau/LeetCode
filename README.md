@@ -1,6 +1,6 @@
 Index | Problem | Solution
 |---|------ |------|
-| 24 | [ Swap Nodes in Pairs][24_link] | [cpp][24_solution]
+| 24 | [Swap Nodes in Pairs][24_link] | [cpp][24_solution]
 | 23 | [Merge k Sorted Lists][23_link] | [cpp][23_solution]
 | 22 | [Generate Parentheses][22_link] | [cpp][22_solution]
 | 21 | [Merge Two Sorted Lists][21_link] | [cpp][21_solution]

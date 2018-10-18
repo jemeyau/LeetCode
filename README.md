@@ -1,6 +1,7 @@
 Index | Problem | Difficulty | Solution
 |---|------ | --- | ------|
-| 27 | [Implement strStr()][27_link] | Easy | [cpp][27_solution]
+| 28 | [Implement strStr()][28_link] | Easy | [cpp][28_solution]
+| 27 | [Remove Element][27_link] | Easy | [cpp][27_solution]
 | 26 | [Remove Duplicates from Sorted Array][26_link] | Easy | [cpp][26_solution]
 | 25 | [Reverse Nodes in k-Group][25_link] | Hard | [cpp][25_solution]
 | 24 | [Swap Nodes in Pairs][24_link] | Medium | [cpp][24_solution]
@@ -27,8 +28,10 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
-[27_link]: https://leetcode.com/problems/implement-strstr/description/
-[27_solution]: ./solutions/strStr.cpp
+[28_link]: https://leetcode.com/problems/implement-strstr/description/
+[28_solution]: ./solutions/strStr.cpp
+[27_link]: https://leetcode.com/problems/remove-element/description/
+[27_solution]: ./solutions/removeElement.cpp
 [26_link]: https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
 [26_solution]: ./solutions/removeDuplicates.cpp
 [25_link]: https://leetcode.com/problems/reverse-nodes-in-k-group/description/

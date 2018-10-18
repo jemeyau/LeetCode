@@ -105,10 +105,13 @@ class Solution
   public:
     ListNode *reverseKGroup(ListNode *head, int k)
     {
+        if (k == 1 || head == NULL)
+            return head;
+
         ListNode *ret = NULL;
         ListNode *dummy = head;
 
-        vector<ListNode *> vec;
+        vector<ListNode *> vec(k, NULL);
 
         ListNode *last = NULL;
         int i = 0;
@@ -116,12 +119,12 @@ class Solution
         {
             if (!head)
                 break;
-            vec.push_back(head);
+            vec[i] = head;
             head = head->next;
 
-            if (vec.size() != k)
+            i++;
+            if (i != k)
             {
-                i++;
                 continue;
             }
 
@@ -150,7 +153,6 @@ class Solution
                 ret = vec.back();
 
             i = 0;
-            vec.clear();
         }
 
         // be aware of that list size is smaller than k

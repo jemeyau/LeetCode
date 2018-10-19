@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | --- | ------|
+| 29 | [Divide Two Integers][29_link] | Medium | [cpp][29_solution]
 | 28 | [Implement strStr()][28_link] | Easy | [cpp][28_solution]
 | 27 | [Remove Element][27_link] | Easy | [cpp][27_solution]
 | 26 | [Remove Duplicates from Sorted Array][26_link] | Easy | [cpp][26_solution]
@@ -28,6 +29,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[29_link]: https://leetcode.com/problems/divide-two-integers
+[29_solution]: ./solutions/divide.cpp
 [28_link]: https://leetcode.com/problems/implement-strstr/description/
 [28_solution]: ./solutions/strStr.cpp
 [27_link]: https://leetcode.com/problems/remove-element/description/

@@ -20,9 +20,11 @@ wrong cases:
 
 "wordgoodgoodgoodbestword"
 ["word","good","best","word"]
+[]
 
 "wordgoodgoodgoodbestword"
 ["word","good","best","good"]
+[8]
 
 
 */
@@ -41,6 +43,15 @@ class Solution
         for (int i = 0; i < words.size(); i++)
             cout << words[i] << endl;
         */
+
+        vector<int> ret;
+
+        if (0 == words.size())
+            return ret;
+
+        if (0 == words[0].size())
+            return ret;
+
         map<char, vector<int>> wordsFirstCh2Index;
         for (int i = 0; i < words.size(); i++)
         {
@@ -55,10 +66,10 @@ class Solution
             if (wordsFirstCh2Index.find(s[i]) == wordsFirstCh2Index.end())
                 continue;
 
-            vector<int> tmpIndex = wordsFirstCh2Index[s[i]];
+            vector<int> &tmpIndex = wordsFirstCh2Index[s[i]];
             for (int j = 0; j < tmpIndex.size(); j++)
             {
-                string tmpWord = words[tmpIndex[j]];
+                string &tmpWord = words[tmpIndex[j]];
                 int k = 0;
                 for (; k < tmpWord.size(); k++)
                 {
@@ -71,22 +82,23 @@ class Solution
             }
         }
 
-        vector<int> ret;
-
         set<int> alreadyIn;
 
-        for (map<int, vector<int>>::iterator iter = matchedIndex.begin(); iter != matchedIndex.end(); iter++)
+        for (int index = 0; index < s.size(); index++)
         {
             alreadyIn.clear();
 
-            int tmpTarget = iter->first;
+            int tmpTarget = index;
+            if (tmpTarget + words.size() * words[0].size() > s.size())
+                continue;
             int i = 0;
             for (; i < words.size(); i++)
             {
-                if (matchedIndex.find(tmpTarget) == matchedIndex.end())
+                map<int, vector<int>>::iterator iter = matchedIndex.find(tmpTarget);
+                if (iter == matchedIndex.end())
                     break;
 
-                vector<int> tmpIndex = matchedIndex.find(tmpTarget)->second;
+                vector<int> &tmpIndex = iter->second;
 
                 bool allIn = true;
                 int curIndex = tmpIndex[0];
@@ -116,7 +128,9 @@ class Solution
             }
 
             if (i == words.size())
-                ret.push_back(iter->first);
+                ret.push_back(index);
+
+            matchedIndex.erase(index);
         }
 
         sort(ret.begin(), ret.end());

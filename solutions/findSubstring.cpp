@@ -52,24 +52,13 @@ class Solution
         if (0 == words[0].size())
             return ret;
 
-        map<char, vector<int>> wordsFirstCh2Index;
-        for (int i = 0; i < words.size(); i++)
-        {
-            char firstCh = words[i][0];
-            wordsFirstCh2Index[firstCh].push_back(i);
-        }
-
         map<int, vector<int>> matchedIndex;
 
         for (int i = 0; i < s.size(); i++)
         {
-            if (wordsFirstCh2Index.find(s[i]) == wordsFirstCh2Index.end())
-                continue;
-
-            vector<int> &tmpIndex = wordsFirstCh2Index[s[i]];
-            for (int j = 0; j < tmpIndex.size(); j++)
+            for (int j = 0; j < words.size(); j++)
             {
-                string &tmpWord = words[tmpIndex[j]];
+                string &tmpWord = words[j];
                 int k = 0;
                 for (; k < tmpWord.size(); k++)
                 {
@@ -78,7 +67,7 @@ class Solution
                 }
 
                 if (k == tmpWord.size())
-                    matchedIndex[i].push_back(tmpIndex[j]);
+                    matchedIndex[i].push_back(j);
             }
         }
 
@@ -90,7 +79,7 @@ class Solution
 
             int tmpTarget = index;
             if (tmpTarget + words.size() * words[0].size() > s.size())
-                continue;
+                break;
             int i = 0;
             for (; i < words.size(); i++)
             {
@@ -132,8 +121,6 @@ class Solution
 
             matchedIndex.erase(index);
         }
-
-        sort(ret.begin(), ret.end());
 
         return ret;
     }

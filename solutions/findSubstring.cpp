@@ -48,7 +48,7 @@ class Solution
             wordsFirstCh2Index[firstCh].push_back(i);
         }
 
-        map<int, int> matchedIndex;
+        map<int, vector<int>> matchedIndex;
 
         for (int i = 0; i < s.size(); i++)
         {
@@ -67,7 +67,7 @@ class Solution
                 }
 
                 if (k == tmpWord.size())
-                    matchedIndex[i] = tmpIndex[j];
+                    matchedIndex[i].push_back(tmpIndex[j]);
             }
         }
 
@@ -75,7 +75,7 @@ class Solution
 
         set<int> alreadyIn;
 
-        for (map<int, int>::iterator iter = matchedIndex.begin(); iter != matchedIndex.end(); iter++)
+        for (map<int, vector<int>>::iterator iter = matchedIndex.begin(); iter != matchedIndex.end(); iter++)
         {
             alreadyIn.clear();
 
@@ -86,13 +86,29 @@ class Solution
                 if (matchedIndex.find(tmpTarget) == matchedIndex.end())
                     break;
 
-                int curIndex = matchedIndex.find(tmpTarget)->second;
+                vector<int> tmpIndex = matchedIndex.find(tmpTarget)->second;
 
-                if (alreadyIn.find(curIndex) != alreadyIn.end())
+                bool allIn = true;
+                int curIndex = tmpIndex[0];
+                for (int j = 0; j < tmpIndex.size(); j++)
                 {
-                    //cout << "alreadyIN: " << curIndex << endl;
-                    break;
+                    if (alreadyIn.empty())
+                    {
+                        allIn = false;
+                        break;
+                    }
+
+                    if (alreadyIn.find(tmpIndex[j]) == alreadyIn.end())
+                    {
+                        //cout << "alreadyIN: " << curIndex << endl;
+                        allIn = false;
+                        curIndex = tmpIndex[j];
+                        break;
+                    }
                 }
+
+                if (allIn)
+                    break;
 
                 alreadyIn.insert(curIndex);
 

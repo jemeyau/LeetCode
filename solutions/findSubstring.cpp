@@ -32,6 +32,7 @@ wrong cases:
 #include "comm_header.h"
 
 #include <set>
+#include <unordered_map>
 
 class Solution
 {
@@ -52,74 +53,31 @@ class Solution
         if (0 == words[0].size())
             return ret;
 
-        map<int, vector<int>> matchedIndex;
+        unordered_map<string, int> counts;
 
-        for (int i = 0; i < s.size(); i++)
+        for (string word : words)
+            counts[word]++;
+
+        int n = s.length(), num = words.size(), len = words[0].length();
+
+        for (int i = 0; i < n - num * len + 1; i++)
         {
-            for (int j = 0; j < words.size(); j++)
+            unordered_map<string, int> seen;
+            int j = 0;
+            for (; j < num; j++)
             {
-                string &tmpWord = words[j];
-                int k = 0;
-                for (; k < tmpWord.size(); k++)
+                string word = s.substr(i + j * len, len);
+                if (counts.find(word) != counts.end())
                 {
-                    if (tmpWord[k] != s[i + k])
+                    seen[word]++;
+                    if (seen[word] > counts[word])
                         break;
                 }
-
-                if (k == tmpWord.size())
-                    matchedIndex[i].push_back(j);
-            }
-        }
-
-        set<int> alreadyIn;
-
-        for (int index = 0; index < s.size(); index++)
-        {
-            alreadyIn.clear();
-
-            int tmpTarget = index;
-            if (tmpTarget + words.size() * words[0].size() > s.size())
-                break;
-            int i = 0;
-            for (; i < words.size(); i++)
-            {
-                map<int, vector<int>>::iterator iter = matchedIndex.find(tmpTarget);
-                if (iter == matchedIndex.end())
+                else
                     break;
-
-                vector<int> &tmpIndex = iter->second;
-
-                bool allIn = true;
-                int curIndex = tmpIndex[0];
-                for (int j = 0; j < tmpIndex.size(); j++)
-                {
-                    if (alreadyIn.empty())
-                    {
-                        allIn = false;
-                        break;
-                    }
-
-                    if (alreadyIn.find(tmpIndex[j]) == alreadyIn.end())
-                    {
-                        //cout << "alreadyIN: " << curIndex << endl;
-                        allIn = false;
-                        curIndex = tmpIndex[j];
-                        break;
-                    }
-                }
-
-                if (allIn)
-                    break;
-
-                alreadyIn.insert(curIndex);
-
-                tmpTarget += words[curIndex].size();
             }
-
-            if (i == words.size())
-                ret.push_back(index);
-
-            matchedIndex.erase(index);
+            if (j == num)
+                ret.push_back(i);
         }
 
         return ret;

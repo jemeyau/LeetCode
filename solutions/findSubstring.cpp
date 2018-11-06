@@ -14,18 +14,98 @@ Input:
   s = "wordgoodstudentgoodword",
   words = ["word","student"]
 Output: []
+
+
+wrong cases:
+
+"wordgoodgoodgoodbestword"
+["word","good","best","word"]
+
+"wordgoodgoodgoodbestword"
+["word","good","best","good"]
+
+
 */
 
 #include "comm_header.h"
 
-class Solution {
-public:
-    vector<int> findSubstring(string s, vector<string>& words) {
+#include <set>
+
+class Solution
+{
+  public:
+    vector<int> findSubstring(string s, vector<string> &words)
+    {
         /*
         cout << s << endl;
         for (int i = 0; i < words.size(); i++)
             cout << words[i] << endl;
         */
+        map<char, vector<int>> wordsFirstCh2Index;
+        for (int i = 0; i < words.size(); i++)
+        {
+            char firstCh = words[i][0];
+            wordsFirstCh2Index[firstCh].push_back(i);
+        }
+
+        map<int, int> matchedIndex;
+
+        for (int i = 0; i < s.size(); i++)
+        {
+            if (wordsFirstCh2Index.find(s[i]) == wordsFirstCh2Index.end())
+                continue;
+
+            vector<int> tmpIndex = wordsFirstCh2Index[s[i]];
+            for (int j = 0; j < tmpIndex.size(); j++)
+            {
+                string tmpWord = words[tmpIndex[j]];
+                int k = 0;
+                for (; k < tmpWord.size(); k++)
+                {
+                    if (tmpWord[k] != s[i + k])
+                        break;
+                }
+
+                if (k == tmpWord.size())
+                    matchedIndex[i] = tmpIndex[j];
+            }
+        }
+
+        vector<int> ret;
+
+        set<int> alreadyIn;
+
+        for (map<int, int>::iterator iter = matchedIndex.begin(); iter != matchedIndex.end(); iter++)
+        {
+            alreadyIn.clear();
+
+            int tmpTarget = iter->first;
+            int i = 0;
+            for (; i < words.size(); i++)
+            {
+                if (matchedIndex.find(tmpTarget) == matchedIndex.end())
+                    break;
+
+                int curIndex = matchedIndex.find(tmpTarget)->second;
+
+                if (alreadyIn.find(curIndex) != alreadyIn.end())
+                {
+                    //cout << "alreadyIN: " << curIndex << endl;
+                    break;
+                }
+
+                alreadyIn.insert(curIndex);
+
+                tmpTarget += words[curIndex].size();
+            }
+
+            if (i == words.size())
+                ret.push_back(iter->first);
+        }
+
+        sort(ret.begin(), ret.end());
+
+        return ret;
     }
 };
 

@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | --- | ------|
+| 35 | [Search Insert Position][35_link] | Easy | [cpp][35_solution]
 | 31 | [Next Permutation][31_link] | Medium | [cpp][31_solution]
 | 30 | [Substring with Concatenation of All Words][30_link] | Hard | [cpp][30_solution]
 | 29 | [Divide Two Integers][29_link] | Medium | [cpp][29_solution]
@@ -31,6 +32,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[35_link]: https://leetcode.com/problems/search-insert-position/
+[35_solution]: ./solutions/searchInsert.cpp
 [31_link]: https://leetcode.com/problems/next-permutation/
 [31_solution]: ./solutions/nextPermutation.cpp
 [30_link]: https://leetcode.com/problems/substring-with-concatenation-of-all-words/

@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | --- | ------|
+| 38 | [Count and Say][38_link] | Easy | [cpp][38_solution]
 | 35 | [Search Insert Position][35_link] | Easy | [cpp][35_solution]
 | 31 | [Next Permutation][31_link] | Medium | [cpp][31_solution]
 | 30 | [Substring with Concatenation of All Words][30_link] | Hard | [cpp][30_solution]
@@ -32,6 +33,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[38_link]: https://leetcode.com/problems/count-and-say/
+[38_solution]: ./solutions/countAndSay.cpp
 [35_link]: https://leetcode.com/problems/search-insert-position/
 [35_solution]: ./solutions/searchInsert.cpp
 [31_link]: https://leetcode.com/problems/next-permutation/

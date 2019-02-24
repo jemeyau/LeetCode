@@ -1,5 +1,5 @@
 Index | Problem | Difficulty | Solution
-|---|------ | --- | ------|
+|---|------ | ---- | ------|
 | 38 | [Count and Say][38_link] | Easy | [cpp][38_solution]
 | 35 | [Search Insert Position][35_link] | Easy | [cpp][35_solution]
 | 31 | [Next Permutation][31_link] | Medium | [cpp][31_solution]

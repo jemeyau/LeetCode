@@ -5,58 +5,33 @@ class Solution
   public:
     int maxSubArray(vector<int> &nums)
     {
-        //1. total sum
-        //2. left total-sum
-        //3. right total-sum
-        //4. compare
-
         if (0 == nums.size())
-        {
             return 0;
-        }
 
-        if (1 == nums.size())
-        {
-            return nums[0];
-        }
+        int **tmpSum = new int *[nums.size()];
+        for (int i = 0; i < nums.size(); i++)
+            tmpSum[i] = new int[nums.size()];
 
-        int totalValue = 0;
+        int maxSum = INT_MIN;
+
         for (int i = 0; i < nums.size(); i++)
         {
-            totalValue += nums[i];
+            for (int j = i; j < nums.size(); j++)
+            {
+                if (i == j)
+                    tmpSum[i][j] = nums[j];
+                else
+                    tmpSum[i][j] = tmpSum[i][j - 1] + nums[j];
+
+                if (tmpSum[i][j] > maxSum)
+                    maxSum = tmpSum[i][j];
+            }
         }
-
-        return getMaxTotalSum(nums, totalValue, 0, nums.size() - 1);
-    }
-
-  private:
-    int getMaxTotalSum(vector<int> &nums, int outerSum, int leftIndex, int rightIndex)
-    {
-        //cout << "outer sum:" << outerSum << " left:" << leftIndex << " right:" << rightIndex << endl;
-
-        if (leftIndex == rightIndex)
-            return nums[leftIndex];
-
-        int leftSum = getMaxTotalSum(nums, outerSum - nums[rightIndex], leftIndex, rightIndex - 1);
-        int rightSum = getMaxTotalSum(nums, outerSum - nums[leftIndex], leftIndex + 1, rightIndex);
-
-        int maxSum = outerSum;
-
-        if (leftSum > maxSum)
-        {
-            maxSum = leftSum;
-        }
-
-        if (rightSum > maxSum)
-        {
-            maxSum = rightSum;
-        }
-
-        //cout << "max sum:" << maxSum << " left:" << leftIndex << " right:" << rightIndex << endl;
 
         return maxSum;
     }
 };
+
 void trimLeftTrailingSpaces(string &input)
 {
     input.erase(input.begin(), find_if(input.begin(), input.end(), [](int ch) {

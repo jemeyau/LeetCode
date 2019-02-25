@@ -9,13 +9,17 @@ class Solution
             return 0;
 
         int size = nums.size();
-        int *dp = new int[size];
-        dp[0] = nums[0];
-        int max = dp[0];
+        //int *dp = new int[size];
+
+        //since we only use dp[i-1], so O(1) space is possiable
+        int dp_i_1 = nums[0]; // dp[i - 1]
+        int dp_i = dp_i_1;//dp[i]
+        int max = nums[0];
         for (int i = 1; i < nums.size(); i++)
         {
-            dp[i] = dp[i - 1] > 0 ? dp[i - 1] + nums[i] : nums[i];
-            max = std::max(dp[i], max);
+            dp_i = (dp_i_1 > 0 ? dp_i_1 : 0) + nums[i]; 
+            max = std::max(dp_i, max);
+            dp_i_1 = dp_i; //update dp[i - 1]
         }
 
         return max;

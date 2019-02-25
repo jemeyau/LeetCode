@@ -8,23 +8,27 @@ class Solution
         if (0 == nums.size())
             return 0;
 
-        int **tmpSum = new int *[nums.size()];
-        for (int i = 0; i < nums.size(); i++)
-            tmpSum[i] = new int[nums.size()];
-
         int maxSum = INT_MIN;
+        int tmp_i_j = 0;
+        int tmp_i_j_1 = 0;
 
         for (int i = 0; i < nums.size(); i++)
         {
             for (int j = i; j < nums.size(); j++)
             {
                 if (i == j)
-                    tmpSum[i][j] = nums[j];
+                {
+                    tmp_i_j = nums[j];
+                }
                 else
-                    tmpSum[i][j] = tmpSum[i][j - 1] + nums[j];
+                {
+                    tmp_i_j = tmp_i_j_1 + nums[j];
+                }
 
-                if (tmpSum[i][j] > maxSum)
-                    maxSum = tmpSum[i][j];
+                tmp_i_j_1 = tmp_i_j;
+
+                if (tmp_i_j > maxSum)
+                    maxSum = tmp_i_j;
             }
         }
 

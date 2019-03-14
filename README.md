@@ -1,6 +1,10 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+<<<<<<< HEAD
 | 67 | [Add Binary][67_link] | Easy | [cpp][67_solution]
+=======
+| 58 | [Length of Last Word][58_link] | Easy | [cpp][58_solution]
+>>>>>>> e0b837f78630bd324ca3a90bac96bc7929bf6d36
 | 53 | [Maximum Subarray][53_link] | Easy | [cpp][53_solution]
 | 38 | [Count and Say][38_link] | Easy | [cpp][38_solution]
 | 35 | [Search Insert Position][35_link] | Easy | [cpp][35_solution]
@@ -35,8 +39,13 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+<<<<<<< HEAD
 [67_link]: https://leetcode.com/problems/add-binary/
 [67_solution]: ./solutions/addBinary.cpp
+=======
+[58_link]: https://leetcode.com/problems/length-of-last-word/
+[58_solution]: ./solutions/lengthOfLastWord.cpp
+>>>>>>> e0b837f78630bd324ca3a90bac96bc7929bf6d36
 [53_link]: https://leetcode.com/problems/maximum-subarray/
 [53_solution]: ./solutions/maxSubArray.cpp
 [38_link]: https://leetcode.com/problems/count-and-say/

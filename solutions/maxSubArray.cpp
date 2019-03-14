@@ -8,31 +8,21 @@ class Solution
         if (0 == nums.size())
             return 0;
 
-        int maxSum = INT_MIN;
-        int tmp_i_j = 0;
-        int tmp_i_j_1 = 0;
+        int size = nums.size();
+        //int *dp = new int[size];
 
-        for (int i = 0; i < nums.size(); i++)
+        //since we only use dp[i-1], so O(1) space is possiable
+        int dp_i_1 = nums[0]; // dp[i - 1]
+        int dp_i = dp_i_1;//dp[i]
+        int max = nums[0];
+        for (int i = 1; i < nums.size(); i++)
         {
-            for (int j = i; j < nums.size(); j++)
-            {
-                if (i == j)
-                {
-                    tmp_i_j = nums[j];
-                }
-                else
-                {
-                    tmp_i_j = tmp_i_j_1 + nums[j];
-                }
-
-                tmp_i_j_1 = tmp_i_j;
-
-                if (tmp_i_j > maxSum)
-                    maxSum = tmp_i_j;
-            }
+            dp_i = (dp_i_1 > 0 ? dp_i_1 : 0) + nums[i]; 
+            max = std::max(dp_i, max);
+            dp_i_1 = dp_i; //update dp[i - 1]
         }
 
-        return maxSum;
+        return max;
     }
 };
 

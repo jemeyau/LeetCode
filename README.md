@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 67 | [Add Binary][67_link] | Easy | [cpp][67_solution]
 | 53 | [Maximum Subarray][53_link] | Easy | [cpp][53_solution]
 | 38 | [Count and Say][38_link] | Easy | [cpp][38_solution]
 | 35 | [Search Insert Position][35_link] | Easy | [cpp][35_solution]
@@ -34,6 +35,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[67_link]: https://leetcode.com/problems/add-binary/
+[67_solution]: ./solutions/addBinary.cpp
 [53_link]: https://leetcode.com/problems/maximum-subarray/
 [53_solution]: ./solutions/maxSubArray.cpp
 [38_link]: https://leetcode.com/problems/count-and-say/

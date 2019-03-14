@@ -7,8 +7,19 @@ class Solution
     {
         if (1 >= x)
             return x;
+
+        /*
+        if x >= 2^(n+1), then sqrt(x) <= x / (2^n)
+        */
+
+        int n = 2;
+        while (n <= x)
+            n *= 2;
+
+        n /= 2;
+        cout << "n:" << n << endl;
         int low = 0;
-        int high = x;
+        int high = x / n;
         int mid = 0;
         while (low <= high)
         {
@@ -16,8 +27,6 @@ class Solution
 
             int mid_mid = mid * mid;
             int mid_1_mid = (mid + 1) * (mid + 1);
-
-            //mid_1_mid should bigger not bigger_equal than x
             if (mid_mid <= x && mid_1_mid > x)
                 return mid;
 

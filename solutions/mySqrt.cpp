@@ -28,24 +28,21 @@ class Solution
         }
 
         cout << "low: " << low << " high:" << high << endl;
-
+        long mid = 0;
         while (low <= high)
         {
-            int mid_mid = low * low;
+            mid = (low + high) / 2;
 
-            //in case of overflow
-            if (INT_MAX - 2*low -2 == mid_mid)
-                return low + 1;
-            if (INT_MAX - 2*low - 2 < mid_mid)
-                return low;
-            int mid_1_mid = (low + 1) * (low + 1);
-            if (mid_mid <= x && mid_1_mid > x)
-                return low;
-
-            low++;
+            if (mid * mid == x)
+                return mid;
+            else if (mid * mid < x)
+                low = mid + 1;
+            else
+                high = mid - 1;
         }
 
-        return low;
+        //return high, not mid
+        return high;
     }
 };
 

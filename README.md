@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 88 | [Merge Sorted Array][88_link] | Easy | [cpp][88_solution]
 | 70 | [Climbing Stairs][70_link] | Easy | [cpp][70_solution]
 | 69 | [Sqrt(x)][69_link] | Easy | [cpp][69_solution]
 | 67 | [Add Binary][67_link] | Easy | [cpp][67_solution]
@@ -38,6 +39,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[88_link]: https://leetcode.com/problems/merge-sorted-array/
+[88_solution]: ./solutions/merge.cpp
 [70_link]: https://leetcode.com/problems/climbing-stairs/
 [70_solution]: ./solutions/climbStairs.cpp
 [69_link]: https://leetcode.com/problems/sqrtx/

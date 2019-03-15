@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 70 | [Climbing Stairs][70_link] | Easy | [cpp][70_solution]
 | 69 | [Sqrt(x)][69_link] | Easy | [cpp][69_solution]
 | 67 | [Add Binary][67_link] | Easy | [cpp][67_solution]
 | 58 | [Length of Last Word][58_link] | Easy | [cpp][58_solution]
@@ -37,6 +38,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[70_link]: https://leetcode.com/problems/climbing-stairs/
+[70_solution]: ./solutions/climbStairs.cpp
 [69_link]: https://leetcode.com/problems/sqrtx/
 [69_solution]: ./solutions/mySqrt.cpp
 [67_link]: https://leetcode.com/problems/add-binary/

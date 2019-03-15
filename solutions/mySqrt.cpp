@@ -9,34 +9,43 @@ class Solution
             return x;
 
         /*
-        if x >= 2^(n+1), then sqrt(x) <= x / (2^n)
+        if x >= 4^n, then 2^n <= sqrt(x) <= x / (2^n)
         */
 
-        int n = 2;
-        while (n <= x)
-            n *= 2;
+        int low = 1;
+        int high = x;
 
-        n /= 2;
-        cout << "n:" << n << endl;
-        int low = 0;
-        int high = x / n;
-        int mid = 0;
-        while (low <= high)
+        int64_t n = 1;
+        int index = 0;
+        while (true)
         {
-            mid = (low + high) / 2;
-
-            int mid_mid = mid * mid;
-            int mid_1_mid = (mid + 1) * (mid + 1);
-            if (mid_mid <= x && mid_1_mid > x)
-                return mid;
-
-            if (mid_mid > x)
-                high = mid;
-            else
-                low = mid;
+            n *= 4;
+            if (x < n)
+                break;
+            index++;
+            low *= 2;
+            high /= 2;
         }
 
-        return mid;
+        cout << "low: " << low << " high:" << high << endl;
+
+        while (low <= high)
+        {
+            int mid_mid = low * low;
+
+            //in case of overflow
+            if (INT_MAX - 2*low -2 == mid_mid)
+                return low + 1;
+            if (INT_MAX - 2*low - 2 < mid_mid)
+                return low;
+            int mid_1_mid = (low + 1) * (low + 1);
+            if (mid_mid <= x && mid_1_mid > x)
+                return low;
+
+            low++;
+        }
+
+        return low;
     }
 };
 

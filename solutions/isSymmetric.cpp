@@ -20,7 +20,7 @@ struct TreeNode
 
 class Solution
 {
-  public:
+public:
     /*
     idea: left-part do preOrderTraverse and right-part do postOrderTraverse,
         and compare the val at the same time.

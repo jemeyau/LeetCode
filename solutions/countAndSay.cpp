@@ -2,7 +2,7 @@
 
 class Solution
 {
-  public:
+public:
     string countAndSay(int n)
     {
         if (0 == n)
@@ -24,11 +24,12 @@ class Solution
             while (true)
             {
                 char target = char(beg + 1);
-                if (target != cur) {
+                if (target != cur)
+                {
                     beg++;
                     continue;
                 }
-                
+
                 int j = 1;
                 while (i + 1 < subStr.size())
                 {

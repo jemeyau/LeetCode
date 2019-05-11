@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 104 | [Maximum Depth of Binary Tree][104_link] | Easy | [cpp][104_solution]
 | 101 | [Symmetric Tree][101_link] | Easy | [cpp][101_solution]
 | 100 | [Same Tree][100_link] | Easy | [cpp][100_solution]
 | 88 | [Merge Sorted Array][88_link] | Easy | [cpp][88_solution]
@@ -41,6 +42,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[104_link]: https://leetcode.com/problems/maximum-depth-of-binary-tree/
+[104_solution]: ./solutions/maxDepth.cpp
 [101_link]: https://leetcode.com/problems/symmetric-tree/
 [101_solution]: ./solutions/isSymmetric.cpp
 [100_link]: https://leetcode.com/problems/same-tree/

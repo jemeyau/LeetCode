@@ -1,15 +1,5 @@
 #include "comm_header.h"
 
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
-
 struct TreeNode
 {
     int val;
@@ -20,36 +10,19 @@ struct TreeNode
 
 class Solution
 {
-  public:
+public:
     int maxDepth(TreeNode *root)
     {
-        queue<TreeNode*> travStack;
+        if (!root)
+            return 0;
 
-        int curDepth = 0;
-        int maxDepth = 0;
+        int leftDepth = maxDepth(root->left);
+        int rightDepth = maxDepth(root->right);
 
-        while (root || !travStack.empty())
-        {
-            if (root)
-            {
-                travStack.push(root);
-                root = root->left;
+        if (leftDepth > rightDepth)
+            return leftDepth + 1;
 
-                curDepth++;
-                if (curDepth > maxDepth)
-                    maxDepth == curDepth;
-            }
-            else
-            {
-                root = travStack.front();
-                travStack.pop();
-                if (!root->right)
-                    curDepth--;
-                root = root->right;
-            }
-        }
-
-        return maxDepth;
+        return rightDepth + 1;
     }
 };
 

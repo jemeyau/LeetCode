@@ -1,15 +1,5 @@
 #include "comm_header.h"
 
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
-
 struct TreeNode
 {
     int val;
@@ -21,53 +11,51 @@ struct TreeNode
 class Solution
 {
 public:
-    /*
-    idea: left-part do preOrderTraverse and right-part do postOrderTraverse,
-        and compare the val at the same time.
-    */
-    bool isSymmetric(TreeNode *root)
+    vector<vector<int>> levelOrderBottom(TreeNode *root)
     {
+        vector<vector<int>> ret;
         if (!root)
-            return true;
+            return ret;
 
-        TreeNode *left = root->left;
-        TreeNode *right = root->right;
+        vector<vector<int>> leftRet = levelOrderBottom(root->left);
+        vector<vector<int>> rightRet = levelOrderBottom(root->right);
 
-        queue<TreeNode *> leftStack;
-        queue<TreeNode *> rightStack;
-
-        while (left || !leftStack.empty())
+        //merge left and right result
+        vector<vector<int>>::reverse_iterator leftIter = leftRet.rbegin();
+        vector<vector<int>>::reverse_iterator rightIter = rightRet.rbegin();
+        while(leftIter != leftRet.rend() || rightIter != rightRet.rend())
         {
-            if (left)
+            vector<int> tmp;
+            if (leftIter != leftRet.rend())
             {
-                if (!right)
-                    return false;
-                leftStack.push(left);
-                left = left->left;
-
-                rightStack.push(right);
-                right = right->right;
+                for (int i = 0; i < leftIter->size(); i++)
+                {
+                    tmp.push_back(leftIter->at(i));
+                }
+                leftIter++;
             }
-            else
+
+            if (rightIter != rightRet.rend())
             {
-                if (right)
-                    return false;
-
-                left = leftStack.front();
-                leftStack.pop();
-                right = rightStack.front();
-                rightStack.pop();
-                if (left->val != right->val)
-                    return false;
-                left = left->right;
-                right = right->left;
+                for (int i = 0; i < rightIter->size(); i++)
+                {
+                    tmp.push_back(rightIter->at(i));
+                }
+                rightIter++;
             }
+
+            ret.push_back(tmp);
         }
 
-        if (right || !rightStack.empty())
-            return false;
+        //need reverse
+        vector<vector<int>> realRet(ret.rbegin(), ret.rend());
 
-        return true;
+        vector<int> rootRet;
+        rootRet.push_back(root->val);
+
+        realRet.push_back(rootRet);
+
+        return realRet;
     }
 };
 
@@ -140,11 +128,6 @@ TreeNode *stringToTreeNode(string input)
     return root;
 }
 
-string boolToString(bool input)
-{
-    return input ? "True" : "False";
-}
-
 int main()
 {
     string line;
@@ -152,10 +135,7 @@ int main()
     {
         TreeNode *root = stringToTreeNode(line);
 
-        bool ret = Solution().isSymmetric(root);
-
-        string out = boolToString(ret);
-        cout << out << endl;
+        vector<vector<int>> ret = Solution().levelOrderBottom(root);
     }
     return 0;
 }

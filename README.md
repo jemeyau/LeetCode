@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 110 | [Balanced Binary Tree][110_link] | Easy | [cpp][110_solution]
 | 108 | [Convert Sorted Array to Binary Search Tree][108_link] | Easy | [cpp][108_solution]
 | 107 | [Binary Tree Level Order Traversal II][107_link] | Easy | [cpp][107_solution]
 | 104 | [Maximum Depth of Binary Tree][104_link] | Easy | [cpp][104_solution]
@@ -44,6 +45,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[110_link]: https://leetcode.com/problems/balanced-binary-tree/
+[110_solution]: ./solutions/isBalanced.cpp
 [108_link]: https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
 [108_solution]: ./solutions/sortedArrayToBST.cpp
 [107_link]: https://leetcode.com/problems/binary-tree-level-order-traversal-ii/

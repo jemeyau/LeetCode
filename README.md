@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 112 | [Path Sum][112_link] | Easy | [cpp][112_solution]
 | 111 | [Minimum Depth of Binary Tree][111_link] | Easy | [cpp][111_solution]
 | 110 | [Balanced Binary Tree][110_link] | Easy | [cpp][110_solution]
 | 108 | [Convert Sorted Array to Binary Search Tree][108_link] | Easy | [cpp][108_solution]
@@ -46,6 +47,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[112_link]: https://leetcode.com/problems/path-sum/
+[112_solution]: ./solutions/hasPathSum.cpp
 [111_link]: https://leetcode.com/problems/minimum-depth-of-binary-tree/
 [111_solution]: ./solutions/minDepth.cpp
 [110_link]: https://leetcode.com/problems/balanced-binary-tree/

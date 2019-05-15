@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 119 | [Pascal's Triangle II][119_link] | Easy | [cpp][119_solution]
 | 118 | [Pascal's Triangle][118_link] | Easy | [cpp][118_solution]
 | 112 | [Path Sum][112_link] | Easy | [cpp][112_solution]
 | 111 | [Minimum Depth of Binary Tree][111_link] | Easy | [cpp][111_solution]
@@ -48,6 +49,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[119_link]: https://leetcode.com/problems/pascals-triangle-ii/
+[119_solution]: ./solutions/getRow.cpp
 [118_link]: https://leetcode.com/problems/pascals-triangle/
 [118_solution]: ./solutions/generate.cpp
 [112_link]: https://leetcode.com/problems/path-sum/

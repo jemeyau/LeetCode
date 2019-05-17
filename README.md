@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 122 | [Best Time to Buy and Sell Stock II][122_link] | Easy | [cpp][122_solution]
 | 121 | [Best Time to Buy and Sell Stock][121_link] | Easy | [cpp][121_solution]
 | 119 | [Pascal's Triangle II][119_link] | Easy | [cpp][119_solution]
 | 118 | [Pascal's Triangle][118_link] | Easy | [cpp][118_solution]
@@ -50,6 +51,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[122_link]: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+[122_solution]: ./solutions/maxProfit_122.cpp
 [121_link]: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 [121_solution]: ./solutions/maxProfit.cpp
 [119_link]: https://leetcode.com/problems/pascals-triangle-ii/

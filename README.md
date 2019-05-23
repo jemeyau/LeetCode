@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 160 | [Intersection of Two Linked Lists][160_link] | Easy | [cpp][160_solution]
 | 155 | [Min Stack][155_link] | Easy | [cpp][155_solution]
 | 141 | [Linked List Cycle][141_link] | Easy | [cpp][141_solution]
 | 136 | [Single Number][136_link] | Easy | [cpp][136_solution]
@@ -55,6 +56,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[160_link]: https://leetcode.com/problems/intersection-of-two-linked-lists/
+[160_solution]: ./solutions/getIntersectionNode.cpp
 [155_link]: https://leetcode.com/problems/min-stack/
 [155_solution]: ./solutions/minStack.cpp
 [141_link]: https://leetcode.com/problems/linked-list-cycle/

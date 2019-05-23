@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 155 | [Min Stack][155_link] | Easy | [cpp][155_solution]
 | 141 | [Linked List Cycle][141_link] | Easy | [cpp][141_solution]
 | 136 | [Single Number][136_link] | Easy | [cpp][136_solution]
 | 125 | [Valid Palindrome][125_link] | Easy | [cpp][125_solution]
@@ -54,6 +55,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[155_link]: https://leetcode.com/problems/min-stack/
+[155_solution]: ./solutions/minStack.cpp
 [141_link]: https://leetcode.com/problems/linked-list-cycle/
 [141_solution]: ./solutions/hasCycle.cpp
 [136_link]: https://leetcode.com/problems/single-number/

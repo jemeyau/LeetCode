@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 167 | [Two Sum II - Input array is sorted][167_link] | Easy | [cpp][167_solution]
 | 160 | [Intersection of Two Linked Lists][160_link] | Easy | [cpp][160_solution]
 | 155 | [Min Stack][155_link] | Easy | [cpp][155_solution]
 | 141 | [Linked List Cycle][141_link] | Easy | [cpp][141_solution]
@@ -56,6 +57,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[167_link]: https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+[167_solution]: ./solutions/twoSum.cpp
 [160_link]: https://leetcode.com/problems/intersection-of-two-linked-lists/
 [160_solution]: ./solutions/getIntersectionNode.cpp
 [155_link]: https://leetcode.com/problems/min-stack/

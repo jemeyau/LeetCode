@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 168 | [Excel Sheet Column Title][168_link] | Easy | [cpp][168_solution]
 | 167 | [Two Sum II - Input array is sorted][167_link] | Easy | [cpp][167_solution]
 | 160 | [Intersection of Two Linked Lists][160_link] | Easy | [cpp][160_solution]
 | 155 | [Min Stack][155_link] | Easy | [cpp][155_solution]
@@ -57,6 +58,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[168_link]: https://leetcode.com/problems/excel-sheet-column-title/
+[168_solution]: ./solutions/convertToTitle.cpp
 [167_link]: https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
 [167_solution]: ./solutions/twoSum.cpp
 [160_link]: https://leetcode.com/problems/intersection-of-two-linked-lists/

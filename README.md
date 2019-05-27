@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 169 | [Majority Element][169_link] | Easy | [cpp][169_solution]
 | 168 | [Excel Sheet Column Title][168_link] | Easy | [cpp][168_solution]
 | 167 | [Two Sum II - Input array is sorted][167_link] | Easy | [cpp][167_solution]
 | 160 | [Intersection of Two Linked Lists][160_link] | Easy | [cpp][160_solution]
@@ -58,6 +59,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[169_link]: https://leetcode.com/problems/majority-element/
+[169_solution]: ./solutions/majorityElement.cpp
 [168_link]: https://leetcode.com/problems/excel-sheet-column-title/
 [168_solution]: ./solutions/convertToTitle.cpp
 [167_link]: https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/

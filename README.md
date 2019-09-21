@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 172 | [Factorial Trailing Zeroes][172_link] | Easy | [cpp][172_solution]
 | 171 | [Excel Sheet Column Number][171_link] | Easy | [cpp][171_solution]
 | 169 | [Majority Element][169_link] | Easy | [cpp][169_solution]
 | 168 | [Excel Sheet Column Title][168_link] | Easy | [cpp][168_solution]
@@ -60,6 +61,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[172_link]: https://leetcode.com/problems/factorial-trailing-zeroes/
+[172_solution]: ./solutions/trailingZeroes.cpp
 [171_link]: https://leetcode.com/problems/excel-sheet-column-number/
 [171_solution]: ./solutions/titleToNumber.cpp
 [169_link]: https://leetcode.com/problems/majority-element/

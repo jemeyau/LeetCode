@@ -5,20 +5,22 @@ class Solution
 public:
     void rotate(vector<int> &nums, int k)
     {
-        if (k == nums.size())
-            return;
-
         k = k % nums.size();
+        reverse(nums, 0, nums.size() - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, nums.size() - 1);
+    }
 
-        vector<int> back(nums);
-
-        for (int i = 0; i < nums.size(); i++)
+    void reverse(vector<int> &nums, int begin, int end)
+    {
+        while (begin < end)
         {
-            int tar = (i + k) % nums.size();
+            int tmp = nums[end];
+            nums[end] = nums[begin];
+            nums[begin] = tmp;
 
-            //cout << "tar:" << tar << endl;
-
-            nums[tar] = back[i];
+            begin++;
+            end--;
         }
     }
 };

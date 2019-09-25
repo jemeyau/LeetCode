@@ -5,12 +5,15 @@ class Solution
 public:
     int hammingWeight(uint32_t n)
     {
+        //cout << n << endl;
         int ret = 0;
         while (n)
         {
             if (n & (uint32_t)1)
                 ret++;
             n = n >> 1;
+
+            //cout << n << endl;
         }
 
         return ret;

@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 191 | [Number of 1 Bits][191_link] | Easy | [cpp][191_solution]
 | 190 | [Reverse Bits][190_link] | Easy | [cpp][190_solution]
 | 189 | [Rotate Array][189_link] | Easy | [cpp][189_solution] 
 | 172 | [Factorial Trailing Zeroes][172_link] | Easy | [cpp][172_solution]
@@ -63,6 +64,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[191_link]: https://leetcode.com/problems/number-of-1-bits/
+[191_solution]: ./solutions/hammingWeight.cpp
 [190_link]: https://leetcode.com/problems/reverse-bits/
 [190_solution]: ./solutions/reverseBits.cpp 
 [189_link]: https://leetcode.com/problems/rotate-array/

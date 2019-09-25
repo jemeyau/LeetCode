@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 190 | [Reverse Bits][190_link] | Easy | [cpp][190_solution]
 | 189 | [Rotate Array][189_link] | Easy | [cpp][189_solution] 
 | 172 | [Factorial Trailing Zeroes][172_link] | Easy | [cpp][172_solution]
 | 171 | [Excel Sheet Column Number][171_link] | Easy | [cpp][171_solution]
@@ -62,6 +63,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[190_link]: https://leetcode.com/problems/reverse-bits/
+[190_solution]: ./solutions/reverseBits.cpp 
 [189_link]: https://leetcode.com/problems/rotate-array/
 [189_solution]: ./solutions/rotateArray.cpp
 [172_link]: https://leetcode.com/problems/factorial-trailing-zeroes/

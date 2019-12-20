@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 385 | [Mini Parser][385_link] | Medium | [cpp][385_solution]
 | 191 | [Number of 1 Bits][191_link] | Easy | [cpp][191_solution]
 | 190 | [Reverse Bits][190_link] | Easy | [cpp][190_solution]
 | 189 | [Rotate Array][189_link] | Easy | [cpp][189_solution] 
@@ -64,6 +65,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[385_link]: https://leetcode.com/problems/mini-parser/
+[385_solution]: ./solutions/deserialize.cpp
 [191_link]: https://leetcode.com/problems/number-of-1-bits/
 [191_solution]: ./solutions/hammingWeight.cpp
 [190_link]: https://leetcode.com/problems/reverse-bits/

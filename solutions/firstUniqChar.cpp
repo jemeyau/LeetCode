@@ -8,18 +8,17 @@ public:
         size_t s_len = s.size();
         if (0 == s_len)
             return -1;
-        map<char, int> record;
+        
+        //the desc says that the string s contain only lowercase letters
+        vector<int> record(26, 0);
         for (int i = 0; i < s_len; i++)
         {
-            if (record.find(s[i]) == record.end())
-                record[s[i]] = 1;
-            else
-                record[s[i]] += 1;
+            record[s[i] - 'a'] += 1;
         }
 
         for (int i = 0; i < s_len; i++)
         {
-            if (record[s[i]] == 1)
+            if (record[s[i] - 'a'] == 1)
                 return i;
         }
 

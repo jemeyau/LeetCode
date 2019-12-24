@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 415 | [Add Strings][415_link] | Easy | [cpp][415_solution]
 | 387 | [First Unique Character in a String][387_link] | Easy | [cpp][387_solution]
 | 385 | [Mini Parser][385_link] | Medium | [cpp][385_solution]
 | 191 | [Number of 1 Bits][191_link] | Easy | [cpp][191_solution]
@@ -66,6 +67,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[415_link]: https://leetcode.com/problems/add-strings/
+[415_solution]: ./solutions/addStrings.cpp
 [387_link]: https://leetcode.com/problems/first-unique-character-in-a-string/
 [387_solution]: ./solutions/firstUniqChar.cpp
 [385_link]: https://leetcode.com/problems/mini-parser/

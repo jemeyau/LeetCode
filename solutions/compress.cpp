@@ -6,75 +6,31 @@ public:
     int compress(vector<char> &chars)
     {
         size_t len = chars.size();
-        if (len <= 1)
-            return (int)len;
 
-        int idx = 0;
-        int retidx = 0;
-        int cursor = idx + 1;
-        int count = 1;
-        int ret = 1;
-        while (idx < len && cursor < len)
+        int cursor = 0;
+        int write = 0;
+        for (int read = 0; read < len; read++)
         {
-            //same character, add the count
-            if (chars[idx] == chars[cursor])
-            {
-                count++;
-                cursor++;
-
-                if (cursor != len)
-                    continue;
-                else
-                {
-                    stringstream ss;
-                    ss << count;
-                    string str;
-                    ss >> str;
-
-                    ret = ret + str.size();
-                    chars[retidx++] = chars[idx];
-                    for (int i = 0; i < str.size(); i++)
-                    {
-                        chars[retidx++] = str[i];
-                    }
-
-                    break;
-                }
-            }
-
-            ret += 1;
-
-            //different character, record the count
-            if (1 == count)
-            {
-                chars[retidx++] = chars[idx];
-                idx = cursor;
-                cursor = idx + 1;
-                if (cursor == len)
-                    chars[retidx++] = chars[idx];
+            if (read + 1 != len && chars[read + 1] == chars[cursor])
                 continue;
-            }
+
+            chars[write++] = chars[cursor];
+            int count = read - cursor + 1;
+            cursor = read + 1;
+            if (count <= 1)
+                continue;
 
             stringstream ss;
             ss << count;
             string str;
             ss >> str;
-            ret = ret + str.size();
-            chars[retidx++] = chars[idx];
             for (int i = 0; i < str.size(); i++)
             {
-                chars[retidx++] = str[i];
+                chars[write++] = str[i];
             }
-
-            idx = cursor;
-            cursor = idx + 1;
-            count = 1;
-
-            if (cursor == len)
-                chars[retidx++] = chars[idx];
         }
 
-        return ret;
+        return write;
     }
 };
 

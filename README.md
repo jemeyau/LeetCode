@@ -1,5 +1,6 @@
 Index | Problem | Difficulty | Solution
 |---|------ | ---- | ------|
+| 443 | [String Compression][443_link] | Easy | [cpp][443_solution]
 | 434 | [Number of Segments in a String][434_link] | Easy | [cpp][434_solution]
 | 415 | [Add Strings][415_link] | Easy | [cpp][415_solution]
 | 387 | [First Unique Character in a String][387_link] | Easy | [cpp][387_solution]
@@ -68,6 +69,8 @@ Index | Problem | Difficulty | Solution
 | 3 | [Longest Substring Without Repeating Characters][3_link] | Medium | [solution][3_solution]
 | 2 | [Add Two Numbers][2_link] | Medium | [solution][2_solution]
 
+[443_link]: https://leetcode.com/problems/string-compression/
+[443_solution]: ./solutions/compress.cpp
 [434_link]: https://leetcode.com/problems/number-of-segments-in-a-string/
 [434_solution]: ./solutions/countSegments.cpp
 [415_link]: https://leetcode.com/problems/add-strings/

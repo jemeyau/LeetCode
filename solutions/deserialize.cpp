@@ -82,10 +82,10 @@ int main()
     string line;
     while (getline(cin, line))
     {
-        string s = stringToString(line);
+        //string s = stringToString(line);
 
         getline(cin, line);
-        cout << out << endl;
+        //cout << out << endl;
     }
     return 0;
 }
